@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>XKong</title>
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="stylesheet" href="css/360Page.css">
+		<link rel="stylesheet" type="text/css" href="css/one.css" />
+		<link rel="stylesheet" type="text/css" href="css/two.css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/snow.js"></script>
+		<script src="js/jquery.fullPage.min.js"></script>
+		<style type="text/css">
+			#text {
+				width: 520px;
+				height: 200px;
+				color: #6fade1;
+				margin: auto;
+				font-size: 30px;
+				font-family: "华文行楷";
+			}
+
+			marquee {
+				font-size: 30px;
+				font-style: italic;
+				color: #fff;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<audio src="1.mp3" autoplay="autoplay"></audio>
+		<div id="360Page">
+			<div class="section first">
+				<h1 style="font-family: '华文行楷'; font-size: 52px">Xing Kong</h1>
+				<ul>
+					<li><img src="img/1x.png" /></li>
+					<li><img src="img/2.jpg" /></li>
+					<li><img src="img/2x.png" /></li>
+					<li><img src="img/3x.png" /></li>
+					<li><img src="img/3.jpg" /></li>
+					<li><img src="img/4x.png" /></li>
+				</ul>
+			</div>
+			<div class="section third">
+				<div><img src="img/1.jpg" /><img src="img/2.jpg" /><img src="img/3.jpg" /><img src="img/4.jpg" /><img
+						src="img/5.jpg" /><img src="img/6.jpg" /><img src="img/7.jpg" /><img src="img/8.jpg" /><img
+						src="img/9.jpg" /><img src="img/10.jpg" /></div>
+			</div>
+			<div class="section fifth">
+				<div id="text"></div>
+				<h1>鼠标移入上方</h1><br />
+				<marquee behavior="alternate">To the time to life,Make years for civilization</marquee>
+			</div>
+		</div>
+		<script>
+			$("ul li img").each(function(i) {
+				$.fn.snow({
+					minSize: 10,
+					maxSize: 18,
+					newOn: 1314,
+					shadow: true,
+					flakeColor: "#fff",
+				});
+			});
+			var i = 0;
+			var str = "世界上有如此多人，能够遇见你，是我最大的幸运！对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！感谢你的到来。祝你们在经济拮据时，还能守护住初心；也祝你们在经济宽裕时，还能不忘初心。";
+			text.onmouseenter = function typing() {
+				var mydiv = document.getElementById("text");
+				mydiv.innerHTML += str.charAt(i);
+				i++;
+				var id = setTimeout(typing, 200);
+				if (i == str.length) {
+					clearTimeout(id);
+				}
+			}
+		</script>
+		<script>
+			$(function() {
+				$('#360Page').fullpage({
+					afterLoad: function(anchorLink, index) {
+						$(".section").removeClass("current");
+						setTimeout(function() {
+							$(".section").eq(index - 1).addClass("current");
+						}, 500);
+					}
+				});
+			});
+			/*window.onload = function() {
+				document.onkeydown = function() {
+					var e = window.event || arguments[0];
+					if (e.keyCode == 123) {
+						return false;
+					} else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+						return false;
+					} else if ((e.shiftKey) && (e.keyCode == 121)) {
+						return false;
+					}
+				};
+				document.oncontextmenu = function() {
+					return false;
+				}
+			}*/
+		</script>
+	</body>
+</html>
